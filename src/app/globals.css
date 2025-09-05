@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-jet: 0 0% 4%;
+  --color-charcoal: 0 0% 10%;
+  --color-umbra: 221 12% 14%;
+  --color-ink: 213 11% 16%;
+  --color-ash: 216 5% 19;
+  --color-steel: 216 4% 22%;
+  --color-fog: 216 4% 51%;
+  --color-pewter: 213 12% 70%;
+  --color-dove: 222 19% 86%;
+  --color-nimbus: 228 21.74% 95.49%;
+  --color-ivory: 40 18% 97%;
+  --color-white: 0 0% 100%;
+  --color-midnight: 214 58.3% 9.4%;
+  --color-evenfall: 214 16.1% 28%;
+  --color-breeze: 214 48.9% 73.9%;
+  --color-dawn: 37 100% 76%;
+  --color-sunset: 22 100% 51.6%;
+  --color-dusk: 263 70% 50.4%;
+  --color-twilight: 255 92% 76%;
+  --scroll-size: 6px;
+  --radius: 0.5rem;
+  --primary: var(--color-white);
+  --primary-hover: var(--color-ivory);
+  --secondary: var(--color-fog);
+  --secondary-hover: var(--color-pewter);
+  --accent: var(--color-sunset);
+  --accent-hover: var(--color-dawn);
+  --background: var(--color-jet);
+  --background-hover: var(--color-umbra);
+  --foreground: var(--color-dove);
+  --foreground-hover: var(--color-white);
+  --card: var(--color-charcoal);
+  --border: var(--color-umbra);
+  --input: var(--color-fog);
+  --scroll-track-color: var(--color-charcoal);
+  --scroll-thumb-color: var(--color-jet);
+  --radius: 0.5rem;
 }
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
+  --color-accent: hsl(var(--accent));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
   }
-}
+} */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  overscroll-behavior-y: none;
+}
+
+.inner-shadow {
+  -webkit-box-shadow: inset 0 0 32px 12px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0 0 32px 12px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0 0 32px 12px rgba(0, 0, 0, 0.75);
+}
+
+.crt-overlay {
+  background-image: url(/noise.png),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 2px,
+      rgba(0, 0, 0, 0.1) 0,
+      rgba(0, 0, 0, 0.1) 4px
+    ),
+    linear-gradient(rgba(0, 255, 0, 0.05), rgba(0, 255, 0, 0.05));
+  background-size: auto, 100% 4px, 100% 100%;
+  opacity: 0.1;
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%,
+  to {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.15;
+  }
+}
+.mono-tag {
+  font-family: var(--font-geist-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: hsl(var(--secondary));
 }
