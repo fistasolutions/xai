@@ -1,5 +1,5 @@
 import React from "react";
-import HomeHero2 from "../hero-animation/new";
+import RightGlowSmoke from "../hero-animation/rightsmoke";
 
 function HomeHero() {
   return (
@@ -70,7 +70,13 @@ function HomeHero() {
             </defs>
           </svg>
         </div>
-        <HomeHero2 />
+        {/* <LineEffect /> */}
+
+        {/* <FullCircleGlow /> */}
+        {/* <ConeGlow /> */}
+
+        {/* <ThreeJSModel /> */}
+        <RightGlowSmoke />
         <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl flex h-full flex-col">
           <div className="relative z-20 mt-20 flex h-full w-full items-center">
             <div className="space-y-8">

@@ -206,6 +206,7 @@
 
 // export default HomeHero2;
 
+// this section is smokes vertical 80 percent , it is working
 "use client";
 
 import { useRef, useEffect } from "react";
@@ -303,7 +304,7 @@ const fragmentShader: string = `
   }
 `;
 
-const HomeHero2: React.FC = () => {
+const RightGlowSmoke: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animationFrameId = useRef<number | null>(null);
   const startTime = useRef<number>(Date.now());
@@ -420,4 +421,4 @@ const HomeHero2: React.FC = () => {
   );
 };
 
-export default HomeHero2;
+export default RightGlowSmoke;
