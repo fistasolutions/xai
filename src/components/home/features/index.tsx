@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function Features() {
@@ -6,7 +7,7 @@ function Features() {
       <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl space-y-16 sm:space-y-32">
         <div className="space-y-12">
           <div>
-            <div className="mono-tag flex items-center gap-2 text-sm">
+            <div className="geist-mono flex items-center gap-2 text-sm">
               <span>[</span> <span>Products</span> <span>]</span>
             </div>
           </div>
@@ -27,13 +28,10 @@ function Features() {
               <div className="bg-primary absolute -bottom-1 -right-1 z-10 size-2 translate-x-px translate-y-px" />
             </div>
             <div className="group max-w-sm grow">
-              <a
-                target="_blank"
-                href="https://AiApplication.com/?referrer=website"
-              >
+              <Link target="_blank" href="#">
                 <div className="absolute inset-0" />
                 <h3 className="text-xl">AiApplication</h3>
-              </a>
+              </Link>
               <p className="text-secondary group-hover:text-primary mt-4">
                 AiApplication is your cosmic guide, now accessible on
                 AiApplication.com, iOS, and Android. Explore the universe with
@@ -132,10 +130,10 @@ function Features() {
               <div className="bg-primary absolute -bottom-1 -right-1 z-10 size-2 translate-x-px translate-y-px" />
             </div>
             <div className="group max-w-sm grow">
-              <a target="_blank" href="https://console.x.ai/">
+              <Link href="#">
                 <div className="absolute inset-0" />
                 <h3 className="text-xl">API</h3>
-              </a>
+              </Link>
               <p className="text-secondary group-hover:text-primary mt-4">
                 Supercharge your applications with AiApplication enhanced speed,
                 precision, and multilingual capabilities.
@@ -263,10 +261,10 @@ function Features() {
               <div className="bg-primary absolute -bottom-1 -right-1 z-10 size-2 translate-x-px translate-y-px" />
             </div>
             <div className="group max-w-sm grow">
-              <a target="_blank" href="https://docs.x.ai/">
+              <Link href="#">
                 <div className="absolute inset-0" />
                 <h3 className="text-xl">Developer Docs</h3>
-              </a>
+              </Link>
               <p className="text-secondary group-hover:text-primary mt-4">
                 Learn how to quickly install AiApplication at the heart of your
                 applications and explore guides covering common use cases.

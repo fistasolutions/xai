@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 function LatestNews() {
@@ -6,7 +7,7 @@ function LatestNews() {
       <div className="mx-auto w-full px-4 lg:px-6 xl:max-w-7xl space-y-16 sm:space-y-32">
         <div className="space-y-12">
           <div>
-            <div className="mono-tag flex items-center gap-2 text-sm">
+            <div className="geist-mono flex items-center gap-2 text-sm">
               <span>[</span> <span>Blog</span> <span>]</span>
             </div>
           </div>
@@ -18,16 +19,16 @@ function LatestNews() {
             </div>
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:gap-12">
               <div>
-                <a
+                <Link
                   className="relative isolate inline-flex shrink-0 items-center justify-center border font-mono text-base/6 uppercase tracking-widest focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500 data-[disabled]:opacity-50 [&>[data-slot=icon]]:-mx-0.5 [&>[data-slot=icon]]:my-0.5 [&>[data-slot=icon]]:shrink-0 [&>[data-slot=icon]]:sm:my-1 gap-x-3 px-4 py-2 sm:text-sm [&>[data-slot=icon]]:size-5 [&>[data-slot=icon]]:sm:size-4 border-[--btn-border] bg-[--btn-bg] text-[--btn-text] hover:bg-[--btn-hover] rounded-full [--btn-bg:transparent] [--btn-border:theme(colors.primary/25%)] [--btn-hover:theme(colors.secondary/20%)] [--btn-text:theme(colors.primary)]"
-                  href="/news"
+                  href="#"
                 >
                   <span
                     className="absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden"
                     aria-hidden="true"
                   />
                   Explore more
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -37,16 +38,18 @@ function LatestNews() {
             <div className="border-border flex flex-col gap-10 border-b py-16 first-of-type:border-t last-of-type:border-b-0 md:flex-row md:gap-12">
               <div className="order-2 flex flex-1 flex-col gap-4 md:order-1 md:gap-12 xl:flex-row">
                 <div className="">
-                  <p className="mono-tag text-xs leading-6">August 28, 2025</p>
+                  <p className="geist-mono text-xs leading-6">
+                    August 28, 2025
+                  </p>
                 </div>
                 <div className="flex flex-1 flex-col space-y-6">
                   <div className="block grow space-y-4">
-                    <a href="/news/AiApplication-code-fast-1">
+                    <Link href="#">
                       <div className="absolute inset-0" />
                       <h3 className="text-xl leading-6">
                         AiApplication Code Fast 1
                       </h3>
-                    </a>
+                    </Link>
                     <p className="text-secondary grow text-balance">
                       We are thrilled to introduce AiApplication-code-fast-1, a
                       speedy and economical reasoning model that excels at
@@ -55,7 +58,7 @@ function LatestNews() {
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <span className="mono-tag text-xs">AiApplication</span>
+                      <span className="geist-mono text-xs">AiApplication</span>
                     </div>
                     <div>
                       <button
@@ -98,14 +101,14 @@ function LatestNews() {
             <div className="border-border flex flex-col gap-10 border-b py-16 first-of-type:border-t last-of-type:border-b-0 md:flex-row md:gap-12">
               <div className="order-2 flex flex-1 flex-col gap-4 md:order-1 md:gap-12 xl:flex-row">
                 <div className="">
-                  <p className="mono-tag text-xs leading-6">July 09, 2025</p>
+                  <p className="geist-mono text-xs leading-6">July 09, 2025</p>
                 </div>
                 <div className="flex flex-1 flex-col space-y-6">
                   <div className="block grow space-y-4">
-                    <a href="/news/AiApplication-4">
+                    <Link href="#">
                       <div className="absolute inset-0" />
                       <h3 className="text-xl leading-6">AiApplication 4</h3>
-                    </a>
+                    </Link>
                     <p className="text-secondary grow text-balance">
                       AiApplication 4 is the most intelligent model in the
                       world. It includes native tool use and real-time search
@@ -118,7 +121,7 @@ function LatestNews() {
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <span className="mono-tag text-xs">AiApplication</span>
+                      <span className="geist-mono text-xs">AiApplication</span>
                     </div>
                     <div>
                       <button
@@ -160,16 +163,16 @@ function LatestNews() {
             <div className="border-border flex flex-col gap-10 border-b py-16 first-of-type:border-t last-of-type:border-b-0 md:flex-row md:gap-12">
               <div className="order-2 flex flex-1 flex-col gap-4 md:order-1 md:gap-12 xl:flex-row">
                 <div className="">
-                  <p className="mono-tag text-xs leading-6">July 14, 2025</p>
+                  <p className="geist-mono text-xs leading-6">July 14, 2025</p>
                 </div>
                 <div className="flex flex-1 flex-col space-y-6">
                   <div className="block grow space-y-4">
-                    <a href="/news/government">
+                    <Link href="#">
                       <div className="absolute inset-0" />
                       <h3 className="text-xl leading-6">
                         Announcing AiApplication for Government
                       </h3>
-                    </a>
+                    </Link>
                     <p className="text-secondary grow text-balance">
                       We are excited to announce AiApplication For Government –
                       a suite of frontier AI products available first to United
@@ -178,7 +181,7 @@ function LatestNews() {
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <span className="mono-tag text-xs">company</span>
+                      <span className="geist-mono text-xs">company</span>
                     </div>
                     <div>
                       <button

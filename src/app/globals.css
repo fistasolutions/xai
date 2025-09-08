@@ -1,52 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --color-jet: 0 0% 4%;
-  --color-charcoal: 0 0% 10%;
-  --color-umbra: 221 12% 14%;
-  --color-ink: 213 11% 16%;
-  --color-ash: 216 5% 19;
-  --color-steel: 216 4% 22%;
-  --color-fog: 216 4% 51%;
-  --color-pewter: 213 12% 70%;
-  --color-dove: 222 19% 86%;
-  --color-nimbus: 228 21.74% 95.49%;
-  --color-ivory: 40 18% 97%;
-  --color-white: 0 0% 100%;
-  --color-midnight: 214 58.3% 9.4%;
-  --color-evenfall: 214 16.1% 28%;
-  --color-breeze: 214 48.9% 73.9%;
-  --color-dawn: 37 100% 76%;
-  --color-sunset: 22 100% 51.6%;
-  --color-dusk: 263 70% 50.4%;
-  --color-twilight: 255 92% 76%;
+  --color-pearl: 40 18% 97%;
+  --color-graphite: 0 0% 10%;
+  --color-onyx: 213 11% 16%;
+  --color-slate: 216 5% 19;
+  --color-amber: 37 100% 76%;
+  --color-mist: 216 4% 51%;
+  --color-abyss: 214 58.3% 9.4%;
+  --color-shadow: 221 12% 14%;
+  --color-silver: 213 12% 70%;
+  --color-cloud: 222 19% 86%;
+  --color-obsidian: 0 0% 4%;
+  --color-snow: 0 0% 100%;
+  --color-storm: 214 16.1% 28%;
+  --color-iron: 216 4% 22%;
+  --color-sky: 214 48.9% 73.9%;
+  --color-flame: 22 100% 51.6%;
+  --color-violet: 263 70% 50.4%;
+  --color-vapor: 228 21.74% 95.49%;
   --scroll-size: 6px;
+  --color-lavender: 255 92% 76%;
   --radius: 0.5rem;
-  --primary: var(--color-white);
-  --primary-hover: var(--color-ivory);
-  --secondary: var(--color-fog);
-  --secondary-hover: var(--color-pewter);
-  --accent: var(--color-sunset);
-  --accent-hover: var(--color-dawn);
-  --background: var(--color-jet);
-  --background-hover: var(--color-umbra);
-  --foreground: var(--color-dove);
-  --foreground-hover: var(--color-white);
-  --card: var(--color-charcoal);
-  --border: var(--color-umbra);
-  --input: var(--color-fog);
-  --scroll-track-color: var(--color-charcoal);
-  --scroll-thumb-color: var(--color-jet);
+  --primary: var(--color-snow);
+  --primary-hover: var(--color-pearl);
+  --accent: var(--color-flame);
+  --background-hover: var(--color-shadow);
+  --secondary-hover: var(--color-silver);
+  --accent-hover: var(--color-amber);
+  --background: var(--color-obsidian);
+  --secondary: var(--color-mist);
+  --foreground: var(--color-cloud);
+  --foreground-hover: var(--color-snow);
+  --input: var(--color-mist);
+  --card: var(--color-graphite);
   --radius: 0.5rem;
+  --scroll-track-color: var(--color-graphite);
+  --border: var(--color-shadow);
+  --scroll-thumb-color: var(--color-obsidian);
 }
 @theme inline {
-  --color-primary: hsl(var(--primary));
   --color-secondary: hsl(var(--secondary));
-  --color-accent: hsl(var(--accent));
+  --color-primary: hsl(var(--primary));
   --color-background: hsl(var(--background));
+  --color-accent: hsl(var(--accent));
   --color-foreground: hsl(var(--foreground));
-  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -60,38 +60,7 @@ body {
   overscroll-behavior-y: none;
 }
 
-.inner-shadow {
-  -webkit-box-shadow: inset 0 0 32px 12px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0 0 32px 12px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0 0 32px 12px rgba(0, 0, 0, 0.75);
-}
-
-.crt-overlay {
-  background-image: url(/noise.png),
-    repeating-linear-gradient(
-      180deg,
-      transparent 0,
-      transparent 2px,
-      rgba(0, 0, 0, 0.1) 0,
-      rgba(0, 0, 0, 0.1) 4px
-    ),
-    linear-gradient(rgba(0, 255, 0, 0.05), rgba(0, 255, 0, 0.05));
-  background-size: auto, 100% 4px, 100% 100%;
-  opacity: 0.1;
-  animation: flicker 1.5s infinite;
-}
-
-@keyframes flicker {
-  0%,
-  to {
-    opacity: 0.1;
-  }
-
-  50% {
-    opacity: 0.15;
-  }
-}
-.mono-tag {
+.geist-mono {
   font-family: var(--font-geist-mono);
   text-transform: uppercase;
   letter-spacing: 0.1em;

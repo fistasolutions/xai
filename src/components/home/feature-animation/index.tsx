@@ -201,7 +201,7 @@ const StarburstAnimation: React.FC = () => {
   const controlsRef = useRef<OrbitControlsImpl>(null);
 
   return (
-    <Canvas style={{ background: "0 0% 4%", height: "100vh" }}>
+    <Canvas style={{ background: "0 0% 4%", maxHeight: "100vh" }}>
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />
       <Starburst controls={controlsRef} />

@@ -33,65 +33,65 @@ function Navbar() {
           </Link>
           <ul className="ml-3 hidden flex-grow gap-4 lg:flex">
             <li>
-              <a
-                className="text-primary/50 mono-tag hover:text-primary px-3 py-1.5 text-sm"
-                href="/AiApplication"
+              <Link
+                className="text-primary/50 geist-mono hover:text-primary px-3 py-1.5 text-sm"
+                href="#"
               >
                 AiApplication
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="text-primary/50 mono-tag hover:text-primary px-3 py-1.5 text-sm"
-                href="/api"
+              <Link
+                className="text-primary/50 geist-mono hover:text-primary px-3 py-1.5 text-sm"
+                href="#"
               >
                 API
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="text-primary/50 mono-tag hover:text-primary px-3 py-1.5 text-sm"
-                href="/company"
+              <Link
+                className="text-primary/50 geist-mono hover:text-primary px-3 py-1.5 text-sm"
+                href="#"
               >
                 Company
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="text-primary/50 mono-tag hover:text-primary px-3 py-1.5 text-sm"
-                href="/colossus"
+              <Link
+                className="text-primary/50 geist-mono hover:text-primary px-3 py-1.5 text-sm"
+                href="#"
               >
                 Colossus
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="text-primary/50 mono-tag hover:text-primary px-3 py-1.5 text-sm"
-                href="/careers"
+              <Link
+                className="text-primary/50 geist-mono hover:text-primary px-3 py-1.5 text-sm"
+                href="#"
               >
                 Careers
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                className="text-primary/50 mono-tag hover:text-primary px-3 py-1.5 text-sm"
-                href="/news"
+              <Link
+                className="text-primary/50 geist-mono hover:text-primary px-3 py-1.5 text-sm"
+                href="#"
               >
                 News
-              </a>
+              </Link>
             </li>
           </ul>
           <div className="flex gap-2">
-            <a
+            <Link
               className="relative isolate inline-flex shrink-0 items-center justify-center border font-mono text-base/6 uppercase tracking-widest focus:outline-none data-[focus]:outline data-[focus]:outline-2 data-[focus]:outline-offset-2 data-[focus]:outline-blue-500 data-[disabled]:opacity-50 [&>[data-slot=icon]]:-mx-0.5 [&>[data-slot=icon]]:my-0.5 [&>[data-slot=icon]]:shrink-0 [&>[data-slot=icon]]:sm:my-1 gap-x-3 px-4 py-2 sm:text-sm [&>[data-slot=icon]]:size-5 [&>[data-slot=icon]]:sm:size-4 border-[--btn-border] bg-[--btn-bg] text-[--btn-text] hover:bg-[--btn-hover] rounded-full [--btn-bg:transparent] [--btn-border:theme(colors.primary/25%)] [--btn-hover:theme(colors.secondary/20%)] [--btn-text:theme(colors.primary)]"
-              href="https://AiApplication.com/?referrer=website"
+              href="#"
             >
               <span
                 className="absolute left-1/2 top-1/2 size-[max(100%,2.75rem)] -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden"
                 aria-hidden="true"
               />
               Try AiApplication
-            </a>
+            </Link>
             <div>
               <button
                 type="button"

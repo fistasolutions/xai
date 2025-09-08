@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import Link from "next/link";
 
 function Footer() {
   return (
@@ -21,31 +23,36 @@ function Footer() {
             <div>
               <div className="space-y-5">
                 <div>
-                  <span className="mono-tag text-sm">Try AiApplication On</span>
+                  <span className="geist-mono text-sm">
+                    Try AiApplication On
+                  </span>
                 </div>
                 <div>
-                  <a
+                  <Link
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
-                    href="https://AiApplication.com"
+                    href="#"
                   >
                     Web
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a
+                  <Link
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
-                    href="https://apps.apple.com/app/apple-store/id6670324846?pt=126952307&ct=x.ai%20Direct%20Link&mt=8"
+                    href="#"
                   >
                     iOS
-                  </a>
+                  </Link>
                 </div>
                 <div>
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
-                    href="https://play.google.com/store/apps/details?id=ai.x.AiApplication&hl=en"
+                    href="#"
                   >
                     Android
                   </a>
@@ -53,100 +60,106 @@ function Footer() {
                 <div>
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
-                    href="https://x.com/i/AiApplication"
+                    href="#"
                   >
                     AiApplication on X
                   </a>
                 </div>
               </div>
             </div>
+
             <div>
               <div className="space-y-5">
                 <div>
-                  <span className="mono-tag text-sm">Products</span>
+                  <span className="geist-mono text-sm">Products</span>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/AiApplication">
+                  <Link className="hover:underline" href="#">
                     AiApplication
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/api">
+                  <Link className="hover:underline" href="#">
                     API
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
+
             <div>
               <div className="space-y-5">
                 <div>
-                  <span className="mono-tag text-sm">Company</span>
+                  <span className="geist-mono text-sm">Company</span>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/company">
+                  <Link className="hover:underline" href="#">
                     Company
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/careers">
+                  <Link className="hover:underline" href="#">
                     Careers
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/contact">
+                  <Link className="hover:underline" href="#">
                     Contact
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/news">
+                  <Link className="hover:underline" href="#">
                     News
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
+
             <div>
               <div className="space-y-5">
                 <div>
-                  <span className="mono-tag text-sm">Resources</span>
+                  <span className="geist-mono text-sm">Resources</span>
                 </div>
                 <div>
                   <a
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
-                    href="https://docs.x.ai"
+                    href="#"
                   >
                     Documentation
                   </a>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/privacy-policy">
+                  <Link className="hover:underline" href="#">
                     Privacy policy
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/security">
+                  <Link className="hover:underline" href="#">
                     Security
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/safety">
+                  <Link className="hover:underline" href="#">
                     Safety
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a className="hover:underline" href="/legal">
+                  <Link className="hover:underline" href="#">
                     Legal
-                  </a>
+                  </Link>
                 </div>
                 <div>
-                  <a
+                  <Link
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="hover:underline"
-                    href="https://status.x.ai"
+                    href="#"
                   >
                     Status
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
