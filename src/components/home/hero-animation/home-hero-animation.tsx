@@ -696,7 +696,7 @@ void main() {
       // const width = canvas.clientWidth;
       // if (width >= 900) return "/images/logo.png";
       // if (width >= 450) return "/images/logoHalf.png";
-      return "/images/logo3.png"; // Use your logo for small
+      return "/images/logo2.png"; // Use your logo for small
     };
 
     let logoPath = chooseLogo();

@@ -179,7 +179,6 @@ const Starburst: React.FC<{
             {isSpecial ? (
               <SpecialBox
                 position={point}
-                // text={`Special Box ${Math.floor(i / 4) + 1}`}
                 text={MOON_PHRASES[Math.floor(i / 4) % MOON_PHRASES.length]}
                 hoverOver={hoverOver}
                 hoverOut={hoverOut}
