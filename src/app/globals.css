@@ -66,3 +66,5 @@ body {
   letter-spacing: 0.1em;
   color: hsl(var(--secondary));
 }
+
+@custom-variant hover (&:hover);
