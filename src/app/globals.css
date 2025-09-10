@@ -68,3 +68,6 @@ body {
 }
 
 @custom-variant hover (&:hover);
+canvas {
+  touch-action: auto !important;
+}

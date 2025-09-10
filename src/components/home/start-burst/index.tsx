@@ -86,7 +86,7 @@ export default function StarBurst() {
       ref={containerRef}
     >
       <div className="relative h-[600px] lg:h-[1000px] xl:h-[1200px] w-full">
-        <div className="absolute left-1/2 top-28 lg:top-56 size-[600px] -translate-x-1/2 lg:size-[1000px] xl:size-[1200px] [&>canvas]:!h-full [&>canvas]:!w-full">
+        <div className="absolute left-1/2 top-28 lg:top-56 size-[400px] -translate-x-1/2 lg:size-[1000px] xl:size-[1200px] [&>canvas]:!h-full [&>canvas]:!w-full">
           <StarburstAnimation />
         </div>
       </div>

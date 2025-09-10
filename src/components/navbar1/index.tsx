@@ -1006,6 +1006,7 @@
 
 // export default BurgerMenu;
 
+// speed up animation
 "use client";
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -1062,20 +1063,20 @@ const BurgerMenu = () => {
     if (newIndex !== -1) {
       pageRefs.current.forEach((el, i) => {
         if (i !== newIndex && el) {
-          gsap.to(el, { opacity: 0, duration: 0.2, overwrite: true });
+          gsap.to(el, { opacity: 0, duration: 0.1, overwrite: true });
         }
       });
       const newPageEl = pageRefs.current[newIndex];
       if (newPageEl) {
         gsap.set(newPageEl, { text: "", opacity: 0 });
         gsap.to(newPageEl, {
-          duration: 0.5,
+          duration: 0.25,
           opacity: 1,
           scrambleText: {
             text: pageTexts[newIndex],
             chars: "upperCase",
-            revealDelay: 0.25,
-            speed: 0.8,
+            revealDelay: 0.125,
+            speed: 1.6,
           },
           overwrite: true,
         });
@@ -1095,37 +1096,37 @@ const BurgerMenu = () => {
 
     tl.to(burgerTopRef.current, {
       y: 11,
-      duration: 0.7,
+      duration: 0.35,
       ease: "power1.inOut",
     })
       .to(
         burgerBotRef.current,
         {
           y: -11,
-          duration: 0.7,
+          duration: 0.35,
           ease: "power1.inOut",
         },
-        "-=0.7"
+        "-=0.35"
       )
       .to(burgerTopRef.current, {
         rotation: 585,
-        duration: 0.5,
+        duration: 0.25,
       })
       .to(
         burgerMidRef.current,
         {
           rotation: 585,
-          duration: 0.5,
+          duration: 0.25,
         },
-        "-=0.5"
+        "-=0.25"
       )
       .to(
         burgerBotRef.current,
         {
           rotation: 675,
-          duration: 0.5,
+          duration: 0.25,
         },
-        "-=0.5"
+        "-=0.25"
       )
       //   .to(burgerRef.current, {
       //     translateX: "1300%",
@@ -1134,30 +1135,30 @@ const BurgerMenu = () => {
         [burgerTopRef.current, burgerMidRef.current, burgerBotRef.current],
         {
           borderColor: "#ffffff",
-          duration: 0.1,
+          duration: 0.05,
           ease: "power1.out",
         },
-        "-=1"
+        "-=0.5"
       )
       // Add overlay animation
       .to(
         overlayRef.current,
         {
           opacity: 1,
-          duration: 0.5,
+          duration: 0.25,
           ease: "power2.out",
         },
-        "-=1"
+        "-=0.5"
       )
       .to(
         sidebarRef.current,
         {
           x: 0,
-          duration: 1,
+          duration: 0.5,
           margin: "20px",
           ease: "power2.out",
         },
-        "-=0.8"
+        "-=0.4"
       );
 
     tlRef.current = tl;
@@ -1172,18 +1173,18 @@ const BurgerMenu = () => {
           //   setTitleWidths();
           gsap.set(titleRefs.current, { text: "" });
           const numItems = menuData.length;
-          const staggerInterval = 0.7;
-          const firstDelay = tlRef.current.duration() - 0.5;
+          const staggerInterval = 0.35;
+          const firstDelay = tlRef.current.duration() - 0.25;
           titleRefs.current.forEach((el, i) => {
             const delay = firstDelay + i * staggerInterval;
             gsap.to(el, {
               delay,
-              duration: 0.8,
+              duration: 0.4,
               scrambleText: {
                 text: titleTexts.current[i],
                 chars: "upperCase",
-                revealDelay: 0.3,
-                speed: 0.4,
+                revealDelay: 0.15,
+                speed: 0.8,
               },
             });
           });
@@ -1197,16 +1198,16 @@ const BurgerMenu = () => {
             if (pageEl) {
               gsap.set(pageEl, { text: "", opacity: 0 });
               const lastDelay = firstDelay + (numItems - 1) * staggerInterval;
-              const pageDelay = lastDelay + 0.3;
+              const pageDelay = lastDelay + 0.15;
               gsap.to(pageEl, {
                 delay: pageDelay,
-                duration: 0.8,
+                duration: 0.4,
                 opacity: 1,
                 scrambleText: {
                   text: pageTexts[initialActiveIndex],
                   chars: "upperCase",
-                  revealDelay: 0.3,
-                  speed: 0.4,
+                  revealDelay: 0.15,
+                  speed: 0.8,
                 },
                 overwrite: true,
               });
@@ -1241,13 +1242,13 @@ const BurgerMenu = () => {
       }
       gsap.set(titleEl, { text: "" });
       gsap.to(titleEl, {
-        duration: 0.5,
+        duration: 0.25,
         overwrite: true,
         scrambleText: {
           text: titleTexts.current[index],
           chars: "upperCase",
-          revealDelay: 0.05,
-          speed: 0.8,
+          revealDelay: 0.025,
+          speed: 1.6,
         },
       });
     }
@@ -1257,13 +1258,13 @@ const BurgerMenu = () => {
       if (pageEl) {
         gsap.set(pageEl, { text: "", opacity: 0 });
         gsap.to(pageEl, {
-          duration: 0.5,
+          duration: 0.25,
           opacity: 1,
           scrambleText: {
             text: pageTexts[index],
             chars: "upperCase",
-            revealDelay: 0.25,
-            speed: 0.8,
+            revealDelay: 0.125,
+            speed: 1.6,
           },
           overwrite: true,
         });
@@ -1278,7 +1279,7 @@ const BurgerMenu = () => {
     if (active !== menuData[index].text) {
       const pageEl = pageRefs.current[index];
       if (pageEl) {
-        gsap.to(pageEl, { opacity: 0, duration: 0.3, overwrite: true });
+        gsap.to(pageEl, { opacity: 0, duration: 0.15, overwrite: true });
       }
     }
   };
@@ -1288,10 +1289,10 @@ const BurgerMenu = () => {
       {/* Transparent overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0  bg-white/70 opacity-0 z-40 pointer-events-none"
+        className="fixed inset-0  bg-white/10 opacity-0 z-40 pointer-events-none"
       />
 
-      <div className="w-full mb-4 mt-5 ml-5 rounded-3xl h-full   z-50 fixed">
+      <div className=" mb-4 mt-5 ml-5 rounded-3xl h-full   z-50 fixed">
         <div className="absolute mt-8">
           <div className="relative w-36 h-8 mx-auto -ml-16 text-gray-600 uppercase z-50 ">
             <div
@@ -1346,14 +1347,14 @@ const BurgerMenu = () => {
                 >
                   {item.text}
                 </span>
-                <span
+                {/* <span
                   ref={addToPageRefs}
                   className="page opacity-0 text-[8px] pt-1  ml-2 font-bold inline-block"
                 >
                   {`PAGE `}
                   <br />
                   {item.page}
-                </span>
+                </span> */}
               </li>
             ))}
           </div>
@@ -1380,7 +1381,7 @@ const BurgerMenu = () => {
           position: absolute;
           inset: 0;
           border-radius: 2px;
-          background: #bef264;
+          background: linear-gradient(to bottom right, #303c66, #96c7ee);
           z-index: -1;
           clip-path: polygon(
             0 0,
@@ -1396,7 +1397,7 @@ const BurgerMenu = () => {
           position: absolute;
           inset: 0;
           border-radius: 2px;
-          background: white;
+          background: #96c7ee;
           z-index: -1;
           clip-path: polygon(
             0 0,
