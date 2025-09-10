@@ -715,7 +715,12 @@ const StarburstAnimation: React.FC = () => {
 
   return (
     <Canvas
-      style={{ background: "0 0% 4%", maxHeight: "100vh", touchAction: "none" }}
+      style={{
+        overflow: "visible",
+        background: "0 0% 4%",
+        maxHeight: "100vh",
+        touchAction: "pan-y",
+      }}
     >
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} />

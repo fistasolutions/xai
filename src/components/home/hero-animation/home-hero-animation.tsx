@@ -1,5 +1,3 @@
-// everything is good
-
 "use client";
 import React, { useRef, useEffect, useState } from "react";
 
@@ -19,7 +17,7 @@ void main() {
 }
 `;
 
-// Fragment shader for composition (stars, logo, trail)
+// Fragment shader for composition (stars, logo, trail, moon)
 const compositionFragmentShader = `#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
 #else
@@ -34,6 +32,7 @@ uniform vec2 uOffset;
 uniform sampler2D uNoiseTexture;
 uniform sampler2D uLogoTexture;
 uniform sampler2D uTrailTexture;
+uniform sampler2D uMoonTexture; // Added for moon texture
 
 //Star brightness
 #define STAR 5.0
@@ -56,8 +55,8 @@ uniform sampler2D uTrailTexture;
 // Aspect ratio (w / h)
 #define LOGO_RATIO 2.08
 
-// Glow strength - increased for better visibility
-#define GLOW_STRENGTH 12.0
+// Glow strength - increased for better visibility over moon
+#define GLOW_STRENGTH 8.0
 // Glow colors
 #define GLOW_RED vec3(0.5, 0.2, 0.2)
 #define GLOW_BLUE vec3(0.3, 0.3, 0.6)
@@ -78,6 +77,15 @@ uniform sampler2D uTrailTexture;
 #define DITHER 0.01
 // Dither texture resolution
 #define DITHER_RES 64.0
+
+// Moon parameters
+#define MOON_SCALE 0.95 // Size relative to screen - much larger
+#define MOON_POSITION vec2(1.1, 0.5) // Position beyond right edge - part of moon will be off-screen
+#define MOON_BLEND 0.8 // Blend factor with glow
+#define MOON_GLOW_STRENGTH 3.0 // Moon's own glow intensity - reduced
+#define MOON_GLOW_SIZE 0.6 // Size of moon's glow relative to moon - smaller
+#define MOON_GLOW_COLOR vec3(0.3, 0.4, 0.7) // Moon glow color (softer blue-white)
+#define MOON_ALPHA 0.7 // Moon transparency (0.0 = fully transparent, 1.0 = fully opaque)
 
 // Gamma encoding (with Gamma = 2.0)
 vec3 gamma_encode(vec3 lrgb) {
@@ -225,6 +233,8 @@ void main() {
  // Get star color
  vec3 col = star(starUv);
 
+ // Moon will be rendered at the very end to appear on top
+
  // Vertical vignette
  float vig = 1.0 - abs(suv.y);
  // Horizontal fade - adjusted for wider screens
@@ -253,13 +263,32 @@ void main() {
 
  // Rim tone mapping
  rim /= (1.0 + rim);
- // Add rim glow
+ // Add rim glow - ensure it overlays the moon properly
  col += (1.0 - col) * rim * rim;
  // Add trail
  col += TRAIL_STRENGTH * hue * pow(trailTex.aaa, TRAIL_EXP);
  // Logo mask
  float a = smoothstep(1.0, 0.2, logo.a);
  col.rgb = a * col.rgb + (1.0 - a);
+
+ // Add moon on top of everything (highest z-index)
+ vec2 moonUv = (vUv - MOON_POSITION) / (MOON_SCALE * vec2(1.0 / aspectRatio, 1.0)) + 0.5;
+ vec4 moon = vec4(0.0);
+ if (moonUv.x >= 0.0 && moonUv.x <= 1.0 && moonUv.y >= 0.0 && moonUv.y <= 1.0) {
+   moon = texture2D(uMoonTexture, moonUv);
+   // Apply transparency and blend moon on top of everything
+   float moonAlpha = moon.a * MOON_ALPHA;
+   col = mix(col, moon.rgb, moonAlpha);
+ }
+
+ // Add moon's glow effect on top
+ vec2 moonGlowDist = (vUv - MOON_POSITION) / (MOON_SCALE * MOON_GLOW_SIZE);
+ // Use uniform scaling for circular glow
+ moonGlowDist.x *= aspectRatio;
+ float moonGlowDistSq = dot(moonGlowDist, moonGlowDist);
+ float moonGlow = exp(-moonGlowDistSq * 3.0) * MOON_GLOW_STRENGTH;
+ // Add moon glow to the color
+ col += moonGlow * MOON_GLOW_COLOR;
 
  // Apply dithering
  col += DITHER * dither;
@@ -268,7 +297,7 @@ void main() {
 }
 `;
 
-// Fragment shader for trail
+// Fragment shader for trail (unchanged)
 const trailFragmentShader = `#ifdef GL_FRAGMENT_PRECISION_HIGH
 precision highp float;
 #else
@@ -592,6 +621,7 @@ void main() {
       noiseTexture: gl.getUniformLocation(compositionProgram!, "uNoiseTexture"),
       logoTexture: gl.getUniformLocation(compositionProgram!, "uLogoTexture"),
       trailTexture: gl.getUniformLocation(compositionProgram!, "uTrailTexture"),
+      moonTexture: gl.getUniformLocation(compositionProgram!, "uMoonTexture"), // Added
     };
 
     // Uniform locations for trail
@@ -701,12 +731,13 @@ void main() {
 
     let logoPath = chooseLogo();
 
-    // Load textures
+    // Load textures (added moon texture)
     Promise.all([
       loadTexture("/images/texture.png", true), // Your noise image
       loadTexture(logoPath, false),
+      loadTexture("/images/moon.png", false), // Add your moon image path here
     ])
-      .then(([noiseTex, logoTex]) => {
+      .then(([noiseTex, logoTex, moonTex]) => {
         // Resize function
         const updateSize = () => {
           canvas.width = canvas.clientWidth;
@@ -842,6 +873,10 @@ void main() {
           gl.activeTexture(gl.TEXTURE2);
           gl.bindTexture(gl.TEXTURE_2D, renderTextures[nextPingPong]);
           gl.uniform1i(compUniforms.trailTexture, 2);
+
+          gl.activeTexture(gl.TEXTURE3);
+          gl.bindTexture(gl.TEXTURE_2D, moonTex);
+          gl.uniform1i(compUniforms.moonTexture, 3); // Added
 
           gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 

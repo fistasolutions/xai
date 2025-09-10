@@ -1347,14 +1347,14 @@ const BurgerMenu = () => {
                 >
                   {item.text}
                 </span>
-                {/* <span
+                <span
                   ref={addToPageRefs}
                   className="page opacity-0 text-[8px] pt-1  ml-2 font-bold inline-block"
                 >
                   {`PAGE `}
                   <br />
                   {item.page}
-                </span> */}
+                </span>
               </li>
             ))}
           </div>

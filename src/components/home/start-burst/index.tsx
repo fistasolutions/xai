@@ -28,7 +28,7 @@
 // export default StarBurst;
 "use client";
 import React, { useEffect, useRef } from "react";
-import StarburstAnimation from "../feature-animation";
+import StarburstAnimation from "./StarBurstAnimation";
 
 function clamp(v: number, a: number, b: number) {
   return Math.max(a, Math.min(b, v));
@@ -85,8 +85,8 @@ export default function StarBurst() {
       className="relative flex justify-center overflow-hidden pb-24"
       ref={containerRef}
     >
-      <div className="relative h-[600px] lg:h-[1000px] xl:h-[1200px] w-full">
-        <div className="absolute left-1/2 top-28 lg:top-56 size-[400px] -translate-x-1/2 lg:size-[1000px] xl:size-[1200px] [&>canvas]:!h-full [&>canvas]:!w-full">
+      <div className="relative overflow-visible h-[600px] lg:h-[1000px] xl:h-[1200px] w-full">
+        <div className="absolute  overflow-visible  left-1/2 top-28 lg:top-56 size-[400px] -translate-x-1/2 lg:size-[1000px] xl:size-[1200px] [&>canvas]:!h-full [&>canvas]:!w-full">
           <StarburstAnimation />
         </div>
       </div>
