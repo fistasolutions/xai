@@ -17,10 +17,10 @@ function Footer() {
         <div
           className="h-full w-full"
           style={{
-            backgroundImage: 'url("/images/footer-moon.png")',
+            backgroundImage: 'url("/images/footer-gradient.jpg")',
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
-            backgroundPosition: "center bottom",
+            backgroundPosition: "center top",
             opacity: 1,
           }}
         />
