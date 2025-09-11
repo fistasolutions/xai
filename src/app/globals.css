@@ -22,6 +22,7 @@
   --scroll-size: 6px;
   --color-lavender: 255 92% 76%;
   --radius: 0.5rem;
+
   --primary: var(--color-snow);
   --primary-hover: var(--color-pearl);
   --accent: var(--color-flame);
@@ -38,6 +39,13 @@
   --scroll-track-color: var(--color-graphite);
   --border: var(--color-shadow);
   --scroll-thumb-color: var(--color-obsidian);
+
+  /* new */
+  --color-black: #010102;
+
+  /* Button gradient colors */
+  --color-gradient-start: #7069eb;
+  --color-gradient-end: #b35df0;
 }
 @theme inline {
   --color-secondary: hsl(var(--secondary));
@@ -47,6 +55,14 @@
   --color-foreground: hsl(var(--foreground));
   --font-mono: var(--font-geist-mono);
   --font-sans: var(--font-geist-sans);
+  --font-space-grotesk: var(--font-space-grotesk);
+  --font-montserrat: var(--font-montserrat);
+  --font-figtree: var(--font-figtree);
+}
+@layer utility {
+  .main-container {
+    @apply mx-auto w-full max-w-[1280px];
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -70,4 +86,13 @@ body {
 @custom-variant hover (&:hover);
 canvas {
   touch-action: auto !important;
+}
+
+/* Custom gradient class */
+.btn-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--color-gradient-start) 0%,
+    var(--color-gradient-end) 100%
+  );
 }

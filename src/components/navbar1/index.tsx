@@ -1011,6 +1011,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import Link from "next/link";
 
 const BurgerMenu = () => {
   const tlRef = useRef<gsap.core.Timeline | null>(null);
@@ -1030,11 +1031,11 @@ const BurgerMenu = () => {
   //   const widthsSet = useRef(false);
 
   const menuData = [
-    { text: "HOME", page: "001" },
-    { text: "CONTACT", page: "002" },
-    { text: "PRICING", page: "003" },
-    { text: "BLOG", page: "004" },
-    { text: "ABOUT", page: "005" },
+    { text: "HOME", page: "001", link: "/" },
+    { text: "CONTACT", page: "002", link: "#" },
+    { text: "PRICING", page: "003", link: "/pricing" },
+    { text: "BLOG", page: "004", link: "#" },
+    { text: "ABOUT", page: "005", link: "#" },
   ];
 
   const pageTexts = menuData.map((item) => `PAGE ${item.page}`);
@@ -1106,7 +1107,7 @@ const BurgerMenu = () => {
           duration: 0.35,
           ease: "power1.inOut",
         },
-        "-=0.35"
+        "-=0.35",
       )
       .to(burgerTopRef.current, {
         rotation: 585,
@@ -1118,7 +1119,7 @@ const BurgerMenu = () => {
           rotation: 585,
           duration: 0.25,
         },
-        "-=0.25"
+        "-=0.25",
       )
       .to(
         burgerBotRef.current,
@@ -1126,7 +1127,7 @@ const BurgerMenu = () => {
           rotation: 675,
           duration: 0.25,
         },
-        "-=0.25"
+        "-=0.25",
       )
       //   .to(burgerRef.current, {
       //     translateX: "1300%",
@@ -1138,7 +1139,7 @@ const BurgerMenu = () => {
           duration: 0.05,
           ease: "power1.out",
         },
-        "-=0.5"
+        "-=0.5",
       )
       // Add overlay animation
       .to(
@@ -1148,7 +1149,7 @@ const BurgerMenu = () => {
           duration: 0.25,
           ease: "power2.out",
         },
-        "-=0.5"
+        "-=0.5",
       )
       .to(
         sidebarRef.current,
@@ -1158,7 +1159,7 @@ const BurgerMenu = () => {
           margin: "20px",
           ease: "power2.out",
         },
-        "-=0.4"
+        "-=0.4",
       );
 
     tlRef.current = tl;
@@ -1191,7 +1192,7 @@ const BurgerMenu = () => {
 
           // initial page
           const initialActiveIndex = menuData.findIndex(
-            (item) => item.text === active
+            (item) => item.text === active,
           );
           if (initialActiveIndex !== -1) {
             const pageEl = pageRefs.current[initialActiveIndex];
@@ -1234,7 +1235,10 @@ const BurgerMenu = () => {
     }
   };
 
-  const handleHover = (e: React.MouseEvent<HTMLLIElement>, index: number) => {
+  const handleHover = (
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+    index: number,
+  ) => {
     const titleEl = titleRefs.current[index];
     if (titleEl && active !== menuData[index].text) {
       if (!titleEl.style.width) {
@@ -1273,8 +1277,8 @@ const BurgerMenu = () => {
   };
 
   const handleMouseLeave = (
-    e: React.MouseEvent<HTMLLIElement>,
-    index: number
+    e: React.MouseEvent<HTMLElement, MouseEvent>,
+    index: number,
   ) => {
     if (active !== menuData[index].text) {
       const pageEl = pageRefs.current[index];
@@ -1289,29 +1293,29 @@ const BurgerMenu = () => {
       {/* Transparent overlay */}
       <div
         ref={overlayRef}
-        className="fixed inset-0  bg-white/10 opacity-0 z-40 pointer-events-none"
+        className="pointer-events-none fixed inset-0 z-40 bg-white/10 opacity-0"
       />
 
-      <div className=" mb-4 mt-5 ml-5 rounded-3xl h-full   z-50 fixed">
+      <div className="fixed z-50 mt-5 mb-4 ml-5 h-full rounded-3xl">
         <div className="absolute mt-8">
-          <div className="relative w-36 h-8 mx-auto -ml-16 text-gray-600 uppercase z-50 ">
+          <div className="relative z-50 mx-auto -ml-16 h-8 w-36 text-gray-600 uppercase">
             <div
               //   ref={burgerRef}
-              className="absolute left-24 w-10 h-8 cursor-pointer "
+              className="absolute left-24 h-8 w-10 cursor-pointer"
               onClick={haminate}
             >
               {/* burger-menu-piece styles converted to Tailwind */}
               <span
                 ref={burgerTopRef}
-                className="block relative w-10 border-t-[6px] border-blue-500 mt-0"
+                className="relative mt-0 block w-10 border-t-[6px] border-blue-500"
               ></span>
               <span
                 ref={burgerMidRef}
-                className="block relative w-10 border-t-[6px] border-blue-500 mt-[5px]"
+                className="relative mt-[5px] block w-10 border-t-[6px] border-blue-500"
               ></span>
               <span
                 ref={burgerBotRef}
-                className="block relative w-10 border-t-[6px] border-blue-500 mt-[5px]"
+                className="relative mt-[5px] block w-10 border-t-[6px] border-blue-500"
               ></span>
             </div>
           </div>
@@ -1319,9 +1323,9 @@ const BurgerMenu = () => {
 
         <div
           ref={sidebarRef}
-          className={`bg-black mt-5 fixed flex  top-0 left-0 -translate-x-full z-20 `}
+          className={`fixed top-0 left-0 z-20 mt-5 flex -translate-x-full bg-black`}
         >
-          <div className=" mt-8 ml-5 mr-4 mb-8 w-[15%] ">
+          <div className="mt-8 mr-4 mb-8 ml-5 w-[15%]">
             {/* <div className=" flex gap-3 items-center">
               <div className="size-[5px] bg-white"></div>
               <ScrambleText
@@ -1330,18 +1334,25 @@ const BurgerMenu = () => {
               />
             </div> */}
           </div>
-          <div className="mt-7 ml-8 mb-7 relative w-[240px]  sm:w-[500px]">
+          <div className="relative mt-7 mb-7 ml-8 w-[240px] sm:w-[500px]">
             {menuData.map((item, index) => (
-              <li
+              <Link
                 key={item.text}
-                className="list-none text-2xl flex items-start lg:text-6xl pl-2 pr-3 mb-3 text-left font-extrabold cursor-pointer w-fit opacity-100 transition-opacity duration-1000 ease-in-out text-white"
-                onClick={() => setActive(item.text)}
+                href={item.link}
+                className="mb-3 flex w-fit cursor-pointer list-none items-start pr-3 pl-2 text-left text-2xl font-extrabold text-white opacity-100 transition-opacity duration-1000 ease-in-out lg:text-6xl"
+                onClick={() => {
+                  setActive(item.text);
+                  // Close menu when link is clicked
+                  if (tlRef.current && !tlRef.current.reversed()) {
+                    tlRef.current.reverse();
+                  }
+                }}
                 onMouseEnter={(e) => handleHover(e, index)}
                 onMouseLeave={(e) => handleMouseLeave(e, index)}
               >
                 <span
                   ref={addToTitleRefs}
-                  className={`title inline-block pl-1  pr-2 lg:pr-5 ${
+                  className={`title inline-block pr-2 pl-1 lg:pr-5 ${
                     active === item.text ? "active" : "inactive"
                   }`}
                 >
@@ -1349,16 +1360,16 @@ const BurgerMenu = () => {
                 </span>
                 <span
                   ref={addToPageRefs}
-                  className="page opacity-0 text-[8px] pt-1  ml-2 font-bold inline-block"
+                  className="page ml-2 inline-block pt-1 text-[8px] font-bold opacity-0"
                 >
                   {`PAGE `}
                   <br />
                   {item.page}
                 </span>
-              </li>
+              </Link>
             ))}
           </div>
-          <div className="  ml-5  px-4 border-l border-gray-500">
+          <div className="ml-5 border-l border-gray-500 px-4">
             <div ref={closeRef}></div>
           </div>
         </div>
